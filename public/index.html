@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Blokus Lobby</title>
+  </head>
+  <body>
+    <div id='root'>
+      <button id="join">Click Here To Join Game</button>
+      <div id="mes"></div>
+    </div>
+  </body>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    document.getElementById("join").addEventListener('click', function(){
+      axios.get('/play').then(function(response){
+        console.log(response.data);
+        if(response.data){
+          window.location.replace(response.data);
+        } else{
+          document.getElementById("mes").textContent = "Game already has 4 players";
+        }
+      })
+    });
+  </script>
+</html>
