@@ -86,7 +86,7 @@ class Piece extends React.Component{
   }
 
   clickListen(e){
-    if(e.pageX > 50 && e.pageX < 690 && e.pageY > 10 && e.pageY < 650){
+    if(e.pageX > 50 && e.pageX < 690 && e.pageY > 10 && e.pageY < 650 && this.props.turn == this.props.color){
       var that = this;
       this.props.attempt(e, this.props.i, this.state.pieceShape, () => {
         window.removeEventListener('mousemove',this.moveListen, true);
