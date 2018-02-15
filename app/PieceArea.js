@@ -3,6 +3,12 @@ import Piece from './Piece.js'
 
 class PieceArea extends React.Component{
   render(){
+    const COLORS = {
+      1: 'red',
+      2: 'blue',
+      3: 'green',
+      4: 'orange'
+    }
     var pieceShapes = [
       [
         [0,0,1,0,0],
@@ -139,6 +145,7 @@ class PieceArea extends React.Component{
         width: '550px',
         height: '810px',
         marginLeft: '10px'}}>
+        <h4>Turn: {COLORS[this.props.turn]}</h4>
         <h2 style={{textAlign: 'center'}}>Your Pieces:</h2>
         {[...Array(21)].map((x,i) => <Piece i={i}
           toggle={this.props.toggle}

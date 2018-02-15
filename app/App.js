@@ -200,7 +200,8 @@ class App extends React.Component{
           toggle={this.selectedToggle.bind(this)}
           attempt={this.attemptPlace.bind(this)}
           pieceSelected={this.state.pieceSelected}
-          color={this.props.playerNum}/>
+          color={this.props.playerNum}
+          turn={this.state.turn}/>
       </div>
     );
   }
