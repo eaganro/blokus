@@ -1,7 +1,20 @@
 import React from 'react';
-import Piece from './Piece.js'
+import Piece from './Piece.js';
+import axios from 'axios';
 
 class PieceArea extends React.Component{
+  constructor(props){
+    super(props);
+  }
+
+  skip(){
+    axios.post('/skip', {
+      num: this.props.color
+    }).then(function(response){
+      console.log(response);
+    })
+  }
+
   render(){
     const COLORS = {
       1: 'red',
@@ -145,7 +158,10 @@ class PieceArea extends React.Component{
         width: '550px',
         height: '850px',
         marginLeft: '10px'}}>
-        <h4>Turn: {COLORS[this.props.turn]}</h4>
+        <div>
+          <span>Turn: {COLORS[this.props.turn]}</span>
+          <button onClick={this.skip.bind(this)} style={{display:'inline-block', float: 'right'}}>No More Moves? Click Here To Skip All Further Turns</button>
+        </div>
         <h2 style={{textAlign: 'center'}}>Your Pieces:</h2>
         {[...Array(21)].map((x,i) => <Piece i={i}
           toggle={this.props.toggle}

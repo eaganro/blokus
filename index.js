@@ -30,6 +30,7 @@ var board = [
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 ];
 var turn = 1;
+var skips = []
 
 app.get('/play', function(req, res){
   console.log(currentPlayers);
@@ -47,7 +48,19 @@ app.post('/data', function(req, res){
   res.send();
 });
 
+app.post('/skip', function(req, res){
+  num = req.body.num;
+  console.log(num);
+  skips.push(Number(num));
+  res.send();
+});
+
 app.get('/data', function(req, res){
+  console.log(turn, skips);
+  while(skips.indexOf(turn) !== -1){
+    console.log(turn);
+    turn = turn < 4 ? turn + 1 : 1;
+  }
   var data = {
     board: board,
     turn: turn
