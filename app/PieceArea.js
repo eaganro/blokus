@@ -161,6 +161,7 @@ class PieceArea extends React.Component{
         <div>
           <span>Turn: {COLORS[this.props.turn]}</span>
           <button onClick={this.skip.bind(this)} style={{display:'inline-block', float: 'right'}}>No More Moves? Click Here To Skip All Further Turns</button>
+          <p>r: rotate piece, f:flip piece</p>
         </div>
         <h2 style={{textAlign: 'center'}}>Your Pieces:</h2>
         {[...Array(21)].map((x,i) => <Piece i={i}
